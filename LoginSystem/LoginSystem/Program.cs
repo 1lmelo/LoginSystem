@@ -1,4 +1,13 @@
+using LoginSystem.Models.DAL;
+using LoginSystem.Models.Interfaces;
+using LoginSystem.Utils;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<IUserDAL, UserDAL>();
+builder.Services.AddScoped<IUtil, Util>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

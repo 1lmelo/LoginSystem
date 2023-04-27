@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "B7sikKlj58CFaNxpMEBO3K2fnvPbz7YaviTExA6YyTk=",
+  "Hash": "jvU8Lby/nqLEPgy42s10Oks2iWW/q/Ce8vlyNmBChwQ=",
   "Source": "LoginSystem",
   "BasePath": "_content/LoginSystem",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Lucas\\Desktop\\Projects\\LoginSystem\\LoginSystem\\ApiAuthentication\\ApiAuthentication.csproj",
+      "Version": 2,
+      "Source": "ApiAuthentication",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [
     {
       "Name": "LoginSystem\\wwwroot",

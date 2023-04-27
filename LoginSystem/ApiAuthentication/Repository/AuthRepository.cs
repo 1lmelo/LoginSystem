@@ -20,9 +20,9 @@ namespace ApiAuthentication.Repository
             return connection;
         }
 
-        public bool GetUser(AuthRequest request)
+        public List<AuthContext> GetUser(AuthRequest request)
         {
-            var response = false;
+            var query = new List<AuthContext>();
             var connectionString = this.GetConnection();
             using (var con = new SqlConnection(connectionString))
             {
@@ -32,11 +32,8 @@ namespace ApiAuthentication.Repository
 
                     if (request.Email != null)
                     {
-                        var query = con.Query<AuthContext>("SELECT * FROM Users WHERE Email = @Email AND PASSWORD = @Password", param: new { Email = request.Email, Password = request.Password }).ToList();
-                        if (query.Count > 0)
-                        {
-                            response = true;
-                        }
+                        query = con.Query<AuthContext>("SELECT * FROM Users WHERE Email = @Email AND PASSWORD = @Password", param: new { Email = request.Email, Password = request.Password }).ToList();
+              
                     }
                 }
                 catch (Exception ex)
@@ -47,7 +44,7 @@ namespace ApiAuthentication.Repository
                 {
                     con.Close();
                 }
-                return response;
+                return query;
             }
         }
     }

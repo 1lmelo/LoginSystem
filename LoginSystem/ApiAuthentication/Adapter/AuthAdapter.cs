@@ -8,14 +8,15 @@ namespace ApiAuthentication.Adapter
     public class AuthAdapter : IAuthAdapter
     {
 
-        public AuthResponse AuthenticationAdapter(string email)
+        public AuthResponse AuthenticationAdapter(List<AuthContext> user)
         {
             try
             {
                 var response = new AuthResponse();
-                if (email != null)
+                if (user.FirstOrDefault().Email != null)
                 {
-                    response.Email = email;
+                    response.Email = user.FirstOrDefault().Email;
+                    response.Name = user.FirstOrDefault().Name;
                     response.StatusCode = HttpStatusCode.OK.ToString();
                     response.Message = "User found in database";
                     response.Role = RolesEnum.Manager.ToString();

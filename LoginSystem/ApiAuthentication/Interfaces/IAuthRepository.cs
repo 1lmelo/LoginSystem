@@ -4,6 +4,6 @@ namespace ApiAuthentication.Interfaces
 {
     public interface IAuthRepository
     {
-        bool GetUser(AuthRequest request);
+        List<AuthContext> GetUser(AuthRequest request);
     }
 }

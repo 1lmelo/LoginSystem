@@ -21,9 +21,9 @@ namespace ApiAuthentication.Services
                 var response = new AuthResponse();
                 var verifyUser = _authRepository.GetUser(request);
 
-                if (verifyUser != false)
+                if (verifyUser.Count > 0)
                 {
-                    response = _adapter.AuthenticationAdapter(request.Email);
+                    response = _adapter.AuthenticationAdapter(verifyUser);
                     var token = TokenService.GenerateToken(response);
                     response.Token = token;
                 }

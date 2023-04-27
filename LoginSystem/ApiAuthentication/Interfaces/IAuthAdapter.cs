@@ -4,6 +4,6 @@ namespace ApiAuthentication.Interfaces
 {
     public interface IAuthAdapter
     {
-        AuthResponse AuthenticationAdapter(string email);
+        AuthResponse AuthenticationAdapter(List<AuthContext> user);
     }
 }

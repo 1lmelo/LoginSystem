@@ -10,12 +10,14 @@ namespace LoginSystem.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUserDAL _userDAL;
         private readonly IUtil _util;
+        private readonly IEmailDAL _emailDAL;
 
-        public DashboardController(ILogger<HomeController> logger, IUserDAL userDAL, IUtil util)
+        public DashboardController(ILogger<HomeController> logger, IUserDAL userDAL, IUtil util, IEmailDAL emailDAL)
         {
             _logger = logger;
             _userDAL = userDAL;
             _util = util;
+            _emailDAL = emailDAL;
         }
         public IActionResult Index()
         {
@@ -31,6 +33,7 @@ namespace LoginSystem.Controllers
                 if (createUser > 0)
                 {
                     ViewBag.Alert = _util.ShowAlert(Alerts.Success, "User created successfully!");
+                    _ = _emailDAL.EmailCreateUser(user.Email, user.Name).GetAwaiter();
                 }
                 else
                 {

@@ -6,5 +6,6 @@ namespace LoginSystem.Models.Interfaces
     {
         string EncryptPassword(string password);
         string ShowAlert(Alerts obj, string message);
+        Task SendEmailAsync(string email, string subject, string message);
     }
 }

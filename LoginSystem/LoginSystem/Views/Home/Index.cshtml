@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LoginModel
+
+@{
     ViewData["Title"] = "Login";
 }
 <div class="sidenav">
@@ -8,18 +10,23 @@
     </div>
 </div>
 <div class="main">
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            @Html.Raw(@ViewBag.Alert)
+        </div>
+    </div>
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form>
+            <form asp-action="Index" asp-controller="Home">
                 <div class="form-group mb-3">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control" placeholder="E-mail">
+                    <label asp-for="Email">E-mail</label>
+                    <input type="email" class="form-control" placeholder="E-mail" asp-for="Email">
                 </div>
                 <div class="form-group mb-3">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-black" asp-area="" asp-controller="Dashboard" asp-action="Index">Login</button>
+                <button type="submit" class="btn btn-black">Login</button>
                 <button type="submit" class="btn btn-secondary" asp-area="" asp-controller="Dashboard" asp-action="Register">Register</button>
                 <a class="recovery" asp-area="" asp-controller="Dashboard" asp-action="Recovery"> Forgot your password</a>
             </form>

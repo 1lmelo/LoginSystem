@@ -1,10 +1,11 @@
-﻿@{
+﻿@model LoginModel
+@{
     ViewData["Title"] = "Home";
 }
 
 <div class="sidenav-home">
     <div class="home-main-text">
-        <p class="mt-5">Welcome, Lucas!!</p>
+        <p class="mt-5">Hi @Model.Name, Welcome!!</p>
     </div>
 </div>
 <div class="main">

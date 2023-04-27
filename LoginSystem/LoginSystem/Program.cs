@@ -1,3 +1,7 @@
+using ApiAuthentication.Adapter;
+using ApiAuthentication.Interfaces;
+using ApiAuthentication.Repository;
+using ApiAuthentication.Services;
 using LoginSystem.Models;
 using LoginSystem.Models.DAL;
 using LoginSystem.Models.Interfaces;
@@ -10,6 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserDAL, UserDAL>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAuthAdapter, AuthAdapter>();
 builder.Services.AddTransient<IUtil, Util>();
 builder.Services.AddTransient<IEmailDAL, EmailDAL>();
 

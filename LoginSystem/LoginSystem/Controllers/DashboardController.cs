@@ -18,6 +18,7 @@ namespace LoginSystem.Controllers
         private readonly IUtil _util;
         private readonly IEmailDAL _emailDAL;
         private readonly IAuthService _authService;
+        private const string passwordRecovery = "Troca123*";
 
         public DashboardController(ILogger<HomeController> logger, IUserDAL userDAL, IUtil util, IEmailDAL emailDAL, IAuthService authService)
         {
@@ -51,9 +52,23 @@ namespace LoginSystem.Controllers
             return View();
         }
 
-        public IActionResult Recovery()
+        public IActionResult Recovery(UserModel user)
         {
-            return View();
+            if (user.Email != null)
+            {
+                user.Password = _util.EncryptPassword(passwordRecovery);
+                var recoveryUser = _userDAL.Update(user);
+                if (recoveryUser.Count > 0)
+                {
+                    ViewBag.Alert = _util.ShowAlert(Alerts.Success, "The new password has been sent to the email!");
+                    _ = _emailDAL.RecoveryUser(user.Email).GetAwaiter();
+                }
+                else
+                {
+                    ViewBag.Alert = _util.ShowAlert(Alerts.Danger, "No user registered with this e-mail!");
+                }
+            }
+                return View();
         }
     }
 }

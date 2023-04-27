@@ -1,4 +1,6 @@
-﻿@{
+﻿@model UserModel
+
+@{
     ViewData["Title"] = "Recovery Password";
 }
 
@@ -9,12 +11,17 @@
     </div>
 </div>
 <div class="main">
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            @Html.Raw(@ViewBag.Alert)
+        </div>
+    </div>
     <div class="col-md-6 col-sm-12">
         <div class="login-form-register">
-            <form>
+            <form asp-action="Recovery" asp-controller="Dashboard">
                 <div class="form-group mb-3">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control" placeholder="E-mail">
+                    <label asp-for="Email">E-mail</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="E-mail">
                 </div>
                 <button type="submit" class="btn btn-black">Send</button>
             </form>

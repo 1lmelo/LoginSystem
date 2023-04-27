@@ -30,6 +30,20 @@ namespace LoginSystem.Models.DAL
                 throw;
             }
         }
+
+        public async Task RecoveryUser(string email)
+        {
+            try
+            {
+                var subject = "Recovery User";
+                var message = "Hi, your new password is Troca123*";
+                await _util.SendEmailAsync(email, subject, message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
 
